@@ -27,9 +27,9 @@ static ssize_t device_write(struct file *file, const char *buffer, size_t length
 
 ```
 
-## Como correrlo
+# Como correrlo
 
-* __si ya se habia cargado previamente...__*
+*__si ya se habia cargado previamente...__*
 
 ```bash
 sudo rmmod mimodulo
@@ -38,7 +38,7 @@ sudo rm -rf /dev/UNGS
 ```
 
 --------------
-### Compilación/Construcción
+## Compilación/Construcción
 
 ```bash
 make clean & make;
@@ -52,10 +52,20 @@ sudo insmod mimodulo.ko;
 
 ### Crear el `char device` y actulizar los permisos del archivo
 
+
+#### *Creando character device*
+
 ```bash
 sudo mknod /dev/UNGS c ${Major_number} 0
 #revisar el major asignado en el log del kernel
 ```
+
+#### *Estableciendo permisos del archivo*
+
+```bash
+sudo chmod 666 /dev/UNGS
+```
+## Pruebas locales
 
 ### Para escribir
 ```bash
@@ -70,7 +80,7 @@ cat /dev/UNGS
 #salida esperada en la terminal
 Hello world
 ```
-###Ver log de mensajes del kernel
+### Ver log de mensajes del kernel
 
 ```bash
 dmesg -w
