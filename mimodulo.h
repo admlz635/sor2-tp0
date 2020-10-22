@@ -1,5 +1,6 @@
 int init_module(void);
 void cleanup_module(void);
+static void caesar_encrypt(char *message, int key);
 static int device_open(struct inode *, struct file *);
 static int device_release(struct inode *, struct file *);
 static ssize_t device_read(struct file *, char *, size_t, loff_t *);
